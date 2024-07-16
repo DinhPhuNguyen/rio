@@ -1,112 +1,59 @@
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { IResourceComponentsProps, useMany } from "@refinedev/core";
-import {
-  DateField,
-  DeleteButton,
-  EditButton,
-  List,
-  MarkdownField,
-  ShowButton,
-  useDataGrid,
-} from "@refinedev/mui";
-import React from "react";
+import React, { useState } from "react";
+import "./style.css"; // Import your CSS file
 
-export const BlogPostList: React.FC<IResourceComponentsProps> = () => {
-  const { dataGridProps } = useDataGrid({
-    syncWithLocation: true,
-  });
-
-  const { data: categoryData, isLoading: categoryIsLoading } = useMany({
-    resource: "categories",
-    ids:
-      dataGridProps?.rows
-        ?.map((item: any) => item?.category?.id)
-        .filter(Boolean) ?? [],
-    queryOptions: {
-      enabled: !!dataGridProps?.rows,
-    },
-  });
-
-  const columns = React.useMemo<GridColDef[]>(
-    () => [
-      {
-        field: "id",
-        headerName: "ID",
-        type: "number",
-        minWidth: 50,
-      },
-      {
-        field: "title",
-        flex: 1,
-        headerName: "Title",
-        minWidth: 200,
-      },
-      {
-        field: "content",
-        flex: 1,
-        headerName: "content",
-        minWidth: 250,
-        renderCell: function render({ value }) {
-          if (!value) return "-";
-          return <MarkdownField value={value?.slice(0, 80) + "..." || ""} />;
-        },
-      },
-      {
-        field: "category",
-        flex: 1,
-        headerName: "Category",
-        minWidth: 300,
-        valueGetter: ({ row }) => {
-          const value = row?.category;
-          return value;
-        },
-        renderCell: function render({ value }) {
-          return categoryIsLoading ? (
-            <>Loading...</>
-          ) : (
-            categoryData?.data?.find((item) => item.id === value?.id)?.title
-          );
-        },
-      },
-      {
-        field: "status",
-        flex: 1,
-        headerName: "Status",
-        minWidth: 200,
-      },
-      {
-        field: "createdAt",
-        flex: 1,
-        headerName: "Created at",
-        minWidth: 250,
-        renderCell: function render({ value }) {
-          return <DateField value={value} />;
-        },
-      },
-      {
-        field: "actions",
-        headerName: "Actions",
-        sortable: false,
-        renderCell: function render({ row }) {
-          return (
-            <>
-              <EditButton hideText recordItemId={row.id} />
-              <ShowButton hideText recordItemId={row.id} />
-              <DeleteButton hideText recordItemId={row.id} />
-            </>
-          );
-        },
-        align: "center",
-        headerAlign: "center",
-        minWidth: 80,
-      },
-    ],
-    [categoryData]
-  );
-
+const SlideItem = ({ imageUrl }: any) => {
   return (
-    <List>
-      <DataGrid {...dataGridProps} columns={columns} autoHeight />
-    </List>
+    <div className="item" style={{ backgroundImage: `url(${imageUrl})` }}>
+      <div className="content">
+        <div className="name">Slide</div>
+        <div className="des">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!
+        </div>
+        <button>See More</button>
+      </div>
+    </div>
   );
 };
+
+const BlogPostList = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const images = [
+    "https://i.ibb.co/qCkd9jS/img1.jpg",
+    "https://i.ibb.co/jrRb11q/img2.jpg",
+    "https://i.ibb.co/NSwVv8D/img3.jpg",
+    "https://i.ibb.co/Bq4Q0M8/img4.jpg",
+    "https://i.ibb.co/jTQfmTq/img5.jpg",
+    "https://i.ibb.co/RNkk6L0/img6.jpg",
+  ];
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
+  };
+
+  return (
+    <div className="container">
+      <div className="slide">
+        {images.map((imageUrl, index) => (
+          <SlideItem key={currentIndex} imageUrl={imageUrl} />
+        ))}
+      </div>
+      <div className="button">
+        <button className="prev" onClick={prevSlide}>
+          <i className="fa-solid fa-arrow-left"></i>
+        </button>
+        <button className="next" onClick={nextSlide}>
+          <i className="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default BlogPostList;
