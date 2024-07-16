@@ -15,7 +15,7 @@ const ModalButton = styled.button`
   font-weight: bold;
 `;
 
-const ModalContainer = styled.div`
+const ModalContainer: any = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -29,7 +29,7 @@ const ModalContainer = styled.div`
   transition: opacity 0.5s, visibility 0.5s;
 `;
 
-const ModalWindow = styled.div`
+const ModalWindow: any = styled.div`
   position: fixed;
   top: 50%;
   right: ${({ open }: any) => (open ? "50%" : "-300px")};
@@ -43,7 +43,7 @@ const ModalWindow = styled.div`
   transition: width 1s, right 1s, border-radius 1s;
 `;
 
-const ModalCardContainer = styled.div`
+const ModalCardContainer: any = styled.div`
   opacity: ${({ open }: any) => (open ? "1" : "0")};
   transition: opacity 1s;
   display: flex;
