@@ -23,9 +23,7 @@ import "./sidebar.scss";
 import { Header } from "../header";
 import { Link } from "react-router-dom";
 import { useAllTokenState, useOpenModalState } from "../state";
-import TokenModal from "./modal";
 import Button from "@mui/material/Button";
-import ModalAddListToken from "./modal";
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({

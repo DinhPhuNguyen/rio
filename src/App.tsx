@@ -27,7 +27,18 @@ function App() {
       <RefineKbarProvider>
         <ColorModeContextProvider>
           <CssBaseline />
-          <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
+          <GlobalStyles
+            styles={{
+              html: { WebkitFontSmoothing: "auto" },
+              body: {
+                backgroundColor: "#0e0e16", // Màu nền bạn muốn
+                fontFamily: "Arial, sans-serif", // Kiểu chữ bạn muốn
+                margin: 0,
+                padding: 0,
+                boxSizing: "border-box",
+              },
+            }}
+          />
           <RefineSnackbarProvider>
             <DevtoolsProvider>
               <Refine
