@@ -1,80 +1,41 @@
-import DarkModeOutlined from "@mui/icons-material/DarkModeOutlined";
-import LightModeOutlined from "@mui/icons-material/LightModeOutlined";
-import AppBar from "@mui/material/AppBar";
-import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
-import Stack from "@mui/material/Stack";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import { useGetIdentity } from "@refinedev/core";
 import { HamburgerMenu, RefineThemedLayoutV2HeaderProps } from "@refinedev/mui";
 import React, { useContext } from "react";
-import { ColorModeContext } from "../../contexts/color-mode";
+import "./index.scss";
 
 type IUser = {
   id: number;
   name: string;
   avatar: string;
 };
-
-export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
-  sticky = true,
-}) => {
-  const { mode, setMode } = useContext(ColorModeContext);
-
-  const { data: user } = useGetIdentity<IUser>();
-
+export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({}) => {
   return (
-    <AppBar position={sticky ? "sticky" : "relative"}>
-      <Toolbar>
-        <Stack
-          direction="row"
-          width="100%"
-          justifyContent="flex-end"
-          alignItems="center"
-        >
-          <HamburgerMenu />
-          <Stack
-            direction="row"
-            width="100%"
-            justifyContent="flex-end"
-            alignItems="center"
-          >
-            <IconButton
-              color="inherit"
-              onClick={() => {
-                setMode();
-              }}
-            >
-              {mode === "dark" ? <LightModeOutlined /> : <DarkModeOutlined />}
-            </IconButton>
-
-            {(user?.avatar || user?.name) && (
-              <Stack
-                direction="row"
-                gap="16px"
-                alignItems="center"
-                justifyContent="center"
-              >
-                {user?.name && (
-                  <Typography
-                    sx={{
-                      display: {
-                        xs: "none",
-                        sm: "inline-block",
-                      },
-                    }}
-                    variant="subtitle2"
-                  >
-                    {user?.name}
-                  </Typography>
-                )}
-                <Avatar src={user?.avatar} alt={user?.name} />
-              </Stack>
-            )}
-          </Stack>
-        </Stack>
-      </Toolbar>
-    </AppBar>
+    <>
+      <header className="header-area">
+        <div className="container">
+          <div className="navbar_meme">
+            <img
+              src="https://theme.bitrixinfotech.com/meme-coin/assets/images/logo.png"
+              alt="logo"
+            />
+          </div>
+          <div className="navbar">
+            <div className="nav-item">
+              <div className="fontsize_navbar">HOME</div>
+              <div className="fontsize_navbar">ABOUT</div>
+              <div className="fontsize_navbar">WHERE TO BUY</div>
+              <div className="fontsize_navbar">TOKENOMICS</div>
+              <div className="fontsize_navbar">ROADMAP</div>
+              <div className="fontsize_navbar">TOKEN</div>
+              <div className="fontsize_navbar">CONTACT</div>
+            </div>
+            <div className="header-btn ms-3">
+              <a className="btn btn-secondary" href="">
+                Buy Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+    </>
   );
 };
