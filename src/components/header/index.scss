@@ -1,7 +1,22 @@
+@mixin transition($transition){
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -ms-transition: $transition;
+    -o-transition: $transition;
+    transition: $transition;
+  }
+  
+  @mixin textShadow($text-shadow) {
+    -webkit-text-shadow: $text-shadow;
+    -moz-text-shadow: $text-shadow;
+    -ms-text-shadow: $text-shadow;
+    -o-text-shadow: $text-shadow;
+    text-shadow: $text-shadow;
+  }
+
 .ms-3 {
     margin-left: 1rem !important;
 }
-
 
 .btn.btn-secondary {
     display: inline-flex;
@@ -77,6 +92,9 @@ a {
     display: flex;
     align-items: center;
     padding: 15px 10px 15px 10px;
+    // position: fixed;
+    // z-index: 100;
+    // background-color: #13212c;
 }
 .navbar_meme{
     img{
@@ -91,11 +109,33 @@ a {
     z-index: 99;
     transition: all 0.3s ease-in-out;
 }
+.is-sticky{
+   position: fixed;
+    z-index: 100;
+    background-color: #13212c;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-10px)
+}
 .fontsize_navbar{
     font-family: sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     color: beige;
+    text-align: center;
+    padding: 15px;
+    list-style: none;
+    font-weight: 700;
     &:hover{
         cursor: pointer;
+        color: #45f882;
     }
+   
 }
+#slide-right {
+    @include transition(.25s ease-in-out);
+    @include textShadow(-300px 0 0px rgba(0,0,0,.0));
+    overflow:visible;
+    &:hover {
+      @include textShadow(0px 0 0px rgb(20, 209, 64));
+    }
+  }

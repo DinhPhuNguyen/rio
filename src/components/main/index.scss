@@ -1,0 +1,166 @@
+.main{
+    width: 100%;
+    margin-top: 8rem;
+}
+.slider__bg {
+    // padding: 158px 0 52px;
+    // position: relative;
+}
+.position-relative {
+    position: relative !important;
+}
+.main_flex{
+    display: flex;
+}
+.main_container{
+    display: flex;
+    width: 98%;
+    margin: 0 auto;
+    &::before{
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50%;
+        -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%);
+        clip-path: polygon(0 0, 0 100%, 100% 100%);
+        background-color: #45f882;
+        height: 50px;
+    }
+
+    &::after {
+        left: auto;
+        right: 0;
+        -webkit-clip-path: polygon(100% 0, 0 100%, 100% 100%);
+        clip-path: polygon(100% 0, 0 100%, 100% 100%);
+    }
+    
+   &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+    background-color: #45f882;
+    height: 50px;    }
+
+}
+.main_left{
+    width: 50%;
+}
+.main_right{
+    width: 50%;
+    img{
+        width: 100%;
+    }
+}
+.main_conten{
+    position: relative;
+    z-index: 2;
+    margin-top: 100px;
+     
+}
+.main_conten {
+     .sub_title {
+        margin: 0 0 30px;
+        text-transform: uppercase;
+        line-height: 1;
+        font-weight: 700;
+        letter-spacing: 4px;
+        font-size: 20px;
+        color: #45f882;
+        position: relative;
+        padding: 17px 0 17px 20px;
+        &::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-image: url('https://theme.bitrixinfotech.com/meme-coin/assets/images/text_gradient_bg.png');
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            z-index: -1;
+            opacity: 0.28;
+        }
+    }
+    .title {
+        margin: 0 0 21px;
+        font-size: 100px;
+        font-family: 'sans-serif';
+        line-height: 0.8;
+        color: #fff;
+        text-shadow: -1px 5px 0px rgba(69, 248, 130, 0.66);
+        text-transform: uppercase;
+    }
+    h3{
+        margin: 0 0;
+        font-size: 40px;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 5px;
+        line-height: 1.4;
+        margin-bottom: 15px;
+        color: #ffffff;
+        opacity: 0.5;
+    }
+    p{
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+}
+
+.count-area {
+    padding: 100px 0px;
+    background-color: rgb(69 248 130 / 15%);
+}
+.position-relative {
+    position: relative !important;
+}
+.count-area::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent 0%, #45f882 50%, transparent 100%);
+}
+
+.count-area {
+    .section_container {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+}
+.justify-content-between {
+    justify-content: space-between !important;
+}
+.d-flex {
+    display: flex !important;
+}
+.text-center {
+    text-align: center !important;
+}
+.count-box span {
+    background-color: rgb(14 14 22 / 40%);
+    border: 2px solid #45f882;
+    color: #fff;
+    font-style: italic;
+    display: inline-block;
+    padding: 6px 30px;
+    border-radius: 100px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0px;
+    letter-spacing: 2px;
+}
+.count-box h2 {
+    font-size: 80px;
+    font-family: 'system-ui';
+    text-shadow: -1px 5px 0px rgba(69, 248, 130, 0.66);
+    text-transform: uppercase;
+    line-height: normal;
+    margin: 12px 0px 0px;
+    color: #ffffff;
+    letter-spacing: 8px;
+}

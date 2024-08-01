@@ -1,5 +1,5 @@
 import { HamburgerMenu, RefineThemedLayoutV2HeaderProps } from "@refinedev/mui";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./index.scss";
 
 type IUser = {
@@ -8,9 +8,27 @@ type IUser = {
   avatar: string;
 };
 export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({}) => {
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > 90) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <header className="header-area">
+      <header className={`header-area ${isSticky ? "is-sticky" : ""}`}>
         <div className="container">
           <div className="navbar_meme">
             <img
@@ -19,15 +37,29 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({}) => {
             />
           </div>
           <div className="navbar">
-            <div className="nav-item">
-              <div className="fontsize_navbar">HOME</div>
-              <div className="fontsize_navbar">ABOUT</div>
-              <div className="fontsize_navbar">WHERE TO BUY</div>
-              <div className="fontsize_navbar">TOKENOMICS</div>
-              <div className="fontsize_navbar">ROADMAP</div>
-              <div className="fontsize_navbar">TOKEN</div>
-              <div className="fontsize_navbar">CONTACT</div>
-            </div>
+            <ul className="nav-item">
+              <li id="slide-right" className="fontsize_navbar">
+                HOME
+              </li>
+              <li id="slide-right" className="fontsize_navbar">
+                ABOUT
+              </li>
+              <li id="slide-right" className="fontsize_navbar">
+                WHERE TO BUY
+              </li>
+              <li id="slide-right" className="fontsize_navbar">
+                TOKENOMICS
+              </li>
+              <li id="slide-right" className="fontsize_navbar">
+                ROADMAP
+              </li>
+              <li id="slide-right" className="fontsize_navbar">
+                TOKEN
+              </li>
+              <li id="slide-right" className="fontsize_navbar">
+                CONTACT
+              </li>
+            </ul>
             <div className="header-btn ms-3">
               <a className="btn btn-secondary" href="">
                 Buy Now

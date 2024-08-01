@@ -20,6 +20,7 @@ import dataProvider from "@refinedev/simple-rest";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { Header } from "./components/header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
+import { Main } from "./components/main";
 
 function App() {
   return (
@@ -31,8 +32,17 @@ function App() {
             styles={{
               html: { WebkitFontSmoothing: "auto" },
               body: {
-                backgroundColor: "#0e0e16", // Màu nền bạn muốn
-                fontFamily: "Arial, sans-serif", // Kiểu chữ bạn muốn
+                backgroundColor: "#0e0e16",
+                backgroundImage:
+                  "url('https://theme.bitrixinfotech.com/meme-coin/assets/images/slider_bg.jpg')",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundAttachment: "fixed",
+                fontSize: "20px",
+                fontWeight: 300,
+                color: "#adb0bc",
+                lineHeight: 1.8,
+                fontFamily: "'Barlow', sans-serif",
                 margin: 0,
                 padding: 0,
                 boxSizing: "border-box",
@@ -62,7 +72,14 @@ function App() {
                 }}
               >
                 <Routes>
-                  <Route element={<Header />}>
+                  <Route
+                    element={
+                      <>
+                        <Header />
+                        <Main />
+                      </>
+                    }
+                  >
                     <Route path="*" />
                   </Route>
                 </Routes>
