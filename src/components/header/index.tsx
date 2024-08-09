@@ -62,7 +62,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({}) => {
             </ul>
             <div className="header-btn ms-3">
               <a className="btn btn-secondary" href="">
-                Buy Now
+                Phu-Dev
               </a>
             </div>
           </div>
